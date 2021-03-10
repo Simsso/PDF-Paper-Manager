@@ -1,7 +1,3 @@
-const types = require('./types');
-const Paper = types.Paper;
-
-
 function paperFileName(fileName) {
     const fileExtension = '.pdf'
     if (!fileName.endsWith(fileExtension)) {
@@ -37,7 +33,7 @@ function paperFileName(fileName) {
     const andAuthorSeparatorRegExp = /\sand\s/
     const authors = authorsStringWithoutEtAl.split(andAuthorSeparatorRegExp);
 
-    return new Paper(fileName, authors, hasEtAl, year, title, tags);
+    return {'fileName': fileName, 'authors': authors, 'hasEtAl': hasEtAl, 'year': year, 'title': title, 'tags': tags};
 }
 
 module.exports = {
