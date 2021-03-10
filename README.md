@@ -15,5 +15,5 @@ Install all dependencies, run tests, and start the application.
 ```bash
 npm install
 npm test
-node src/app.js
+npm start
 ```

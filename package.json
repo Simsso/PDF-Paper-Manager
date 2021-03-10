@@ -4,6 +4,7 @@
   "description": "Manager for papers stored in a folder in PDF format",
   "main": "src/app.js",
   "scripts": {
+    "start": "node src/app.js",
     "test": "mocha --reporter spec"
   },
   "repository": {
