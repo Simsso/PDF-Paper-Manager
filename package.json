@@ -4,7 +4,7 @@
   "description": "Manager for papers stored in a folder in PDF format",
   "main": "src/app.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "mocha --reporter spec"
   },
   "repository": {
     "type": "git",
@@ -17,6 +17,8 @@
   },
   "homepage": "https://github.com/Simsso/PDF-Paper-Manager#readme",
   "dependencies": {
-    "dotenv": "^8.2.0"
+    "chai": "^4.3.3",
+    "dotenv": "^8.2.0",
+    "mocha": "^8.3.1"
   }
 }
