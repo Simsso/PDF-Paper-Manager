@@ -10,3 +10,25 @@ describe('Paper title parser', () => {
         expect(paper).to.eql(expectedPaper);
     });
 });
+
+describe('Remove file name extension', () => {
+    const inputTargetExamples = [
+        ['test.pdf', 'test'],
+        ['test.abc.pdf', 'test.abc'],
+        ['test.pdf.pdf', 'test.pdf'],
+    ]
+
+    function testFn(inputAndTarget, index) {
+        const [input, target] = inputAndTarget;
+        it(`Removes ".pdf" from the end of files (case ${index})`, () => {
+            const out = parser.removeFileNameExtension(input);
+            expect(out).to.eql(target);
+        });
+    }
+
+    inputTargetExamples.forEach(testFn);
+
+    it('Rejects file names without ".pdf" ending', () => {
+        expect(parser.removeFileNameExtension.bind('test')).to.throw();
+    });
+});

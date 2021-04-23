@@ -5,6 +5,15 @@ const etAlRegExp = /\set al\.$/;
 const andAuthorSeparatorRegExp = /\sand\s/
 
 
+module.exports = {
+    paperFileName,
+    removeFileNameExtension,
+    parseYear,
+    parseAuthors,
+    parseTitle,
+    parseTags,
+}
+
 function paperFileName(fileName) {
     const fileNameWithoutExtension = removeFileNameExtension(fileName);
     const year = parseYear(fileNameWithoutExtension);
@@ -14,10 +23,6 @@ function paperFileName(fileName) {
     const { authors, hasEtAl } = parseAuthors(authorsString);
 
     return {'fileName': fileName, 'authors': authors, 'hasEtAl': hasEtAl, 'year': year, 'title': title, 'tags': tags};
-}
-
-module.exports = {
-    paperFileName
 }
 
 function removeFileNameExtension(fileName) {
