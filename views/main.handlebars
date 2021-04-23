@@ -1,0 +1,35 @@
+<h2>Search</h2>
+
+TODO
+
+<h2>All {{len papers}} Papers</h2>
+
+{{#if invalidPaperFileNames}}
+<p>Invalid paper file names:</p>
+<ul>
+    {{#each invalidPaperFileNames}}
+        <li><code>{{this}}</code></li>
+    {{/each}}
+</ul>
+{{/if}}
+
+<table>
+    <tr>
+        <th>Authors</th>
+        <th>Year</th>
+        <th>Title</th>
+        <th>Tags</th>
+    </tr>
+{{#each papers}}
+    <tr>
+        <td>{{renderAuthors this.authors}}{{renderEtAl this.hasEtAl}}</td>
+        <td>{{this.year}}</td>
+        <td>{{this.title}}</td>
+        <td>
+            {{#each this.tags}}
+                <code>{{this}}</code>&nbsp;
+            {{/each}}
+        </td>
+    </tr>
+{{/each}}
+</table>

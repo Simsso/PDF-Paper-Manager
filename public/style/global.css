@@ -1,0 +1,12 @@
+html, body {
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+body {
+    background-color: aliceblue;
+}
+
+main {
+    max-width: 1200px;
+    margin: 50px auto;
+}
