@@ -54,7 +54,7 @@ describe('Tag parser', () => {
     });
 
     it('Rejects titles with an opening square bracket but no tags (case 1)', () => {
-        expect(() => parser.parseTags('Test [abc,abc,def]')).to.throw();
+        expect(() => parser.parseTags('Test [abc,abc,def')).to.throw();
     });
 
     it('Rejects titles with an opening square bracket but no tags (case 2)', () => {

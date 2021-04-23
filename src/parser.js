@@ -57,6 +57,10 @@ function parseTags(titleAndTagsString) {
     if (tagsMatch) {
         tags = tagsMatch[0].slice(1, -1).split(',');
         tags = tags.map(s => s.trim());
+        tags = [...new Set(tags)] // deduplicate
+    }
+    else if (titleAndTagsString.includes('[')) {
+        throw new Error('Title must not include "[" if there are no tags present');
     }
     return tags;
 }
