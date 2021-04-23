@@ -11,7 +11,7 @@ describe('Paper title parser', () => {
     });
 });
 
-describe('Remove file name extension', () => {
+describe('File name extension removal', () => {
     const inputTargetExamples = [
         ['test.pdf', 'test'],
         ['test.abc.pdf', 'test.abc'],
@@ -25,10 +25,39 @@ describe('Remove file name extension', () => {
             expect(out).to.eql(target);
         });
     }
-
     inputTargetExamples.forEach(testFn);
 
     it('Rejects file names without ".pdf" ending', () => {
-        expect(parser.removeFileNameExtension.bind('test')).to.throw();
+        expect(() => parser.removeFileNameExtension('test')).to.throw();
+    });
+});
+
+describe('Tag parser', () => {
+    const inputTargetExamples = [
+        ['[abc,def]', ['abc', 'def']],
+        ['title [abc,def]', ['abc', 'def']],
+        ['title [ abc , def]', ['abc', 'def']],
+    ]
+
+    function testFn(inputAndTarget, index) {
+        const [input, target] = inputAndTarget;
+        it(`Parses a list of tags (case ${index})`, () => {
+            const out = parser.parseTags(input);
+            expect(out).to.eql(target);
+        });
+    }
+    inputTargetExamples.forEach(testFn);
+
+    it('Removes duplicate tages', () => {
+        const out = parser.parseTags('Test [abc,abc,def]');
+        expect(out).to.eql(['abc','def']);
+    });
+
+    it('Rejects titles with an opening square bracket but no tags (case 1)', () => {
+        expect(() => parser.parseTags('Test [abc,abc,def]')).to.throw();
+    });
+
+    it('Rejects titles with an opening square bracket but no tags (case 2)', () => {
+        expect(() => parser.parseTags('Test[')).to.throw();
     });
 });
