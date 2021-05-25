@@ -1,6 +1,10 @@
 <h2>Search</h2>
 
-TODO
+<h3>Tags</h3>
+
+{{#each tagCounts}}
+<code class="tag">{{this.tag}} ({{this.count}})</code>
+{{/each}}
 
 <h2>All {{len papers}} Papers</h2>
 
@@ -31,7 +35,7 @@ TODO
         </td>
         <td>
             {{#each this.tags}}
-                <code>{{this}}</code>&nbsp;
+                <code class="tag">{{this}}</code>&nbsp;
             {{/each}}
         </td>
     </tr>

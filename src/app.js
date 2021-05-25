@@ -5,6 +5,7 @@ const express = require('express');
 const handlebars = require('express-handlebars');
 
 const io = require('./io');
+const tags = require('./tags');
 
 
 const app = express();
@@ -23,6 +24,7 @@ app.get('/', async (req, res) => {
     const options = {
         layout: 'index',
         papers: parsedPapers,
+        tagCounts: tags.getTagCountsSorted(parsedPapers),
         invalidPaperFileNames: invalidPaperFileNames,
     };
 

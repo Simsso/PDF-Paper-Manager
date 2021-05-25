@@ -14,3 +14,13 @@ main {
 table th {
     text-align: left;
 }
+
+code.tag {
+    background: rgba(0, 0, 0, 0.04);
+    padding: 0 2px;
+
+    /* disable line breaks in tags */
+    white-space: pre;
+    word-break: normal;
+    word-wrap: normal;
+}
