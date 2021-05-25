@@ -1,4 +1,4 @@
-module.exports = {getTags, getTagCounts, sortTagDict, getTagCountsSorted};
+module.exports = {getTags, getTagCounts, sortTagDict, getTagCountsSorted, filterPapersByTags};
 
 function getTags(parsedPapers) {
     const s = new Set();
@@ -30,4 +30,13 @@ function sortTagDict(tagDict) {
 function getTagCountsSorted(parsedPapers) {
     const sortedTagsWithCounts = sortTagDict(getTagCounts(parsedPapers));
     return sortedTagsWithCounts.map(tuple => {return {tag: tuple[0], count: tuple[1]}});
+}
+
+function filterPapersByTags(parsedPapers, tags) {
+    function setIntersection(s1, s2) {
+        return new Set([...s1].filter(x => s2.has(x)));
+    }
+
+    const tagSet = new Set(tags);
+    return parsedPapers.filter(p => setIntersection(p.tags, tagSet).size > 0)
 }

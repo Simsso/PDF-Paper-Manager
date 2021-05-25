@@ -31,6 +31,19 @@ app.get('/', async (req, res) => {
     res.render('main', options);
 });
 
+app.get('/tags/:tagId', async (req, res) => {
+    const [parsedPapers, ] = await io.getPaperList();
+    const tagId = req.params.tagId;
+    const filteredParsedPapers = tags.filterPapersByTags(parsedPapers, [tagId]);
+    const options = {
+        layout: 'index',
+        papers: filteredParsedPapers,
+        tag: tagId,
+    };
+
+    res.render('tag', options);
+});
+
 app.get('/papers', async (req, res) => {
     res.header("Content-Type",'application/json');
     return res.send(JSON.stringify(await io.getPaperList(), null, 4));

@@ -1,21 +1,4 @@
-<h2>Search</h2>
-
-<h3>Tags</h3>
-
-{{#each tagCounts}}
-<code class="tag"><a href="/tags/{{this.tag}}">{{this.tag}} ({{this.count}})</a></code>
-{{/each}}
-
-<h2>All {{len papers}} Papers</h2>
-
-{{#if invalidPaperFileNames}}
-<p>Invalid paper file names:</p>
-<ul>
-    {{#each invalidPaperFileNames}}
-        <li><code>{{this}}</code></li>
-    {{/each}}
-</ul>
-{{/if}}
+<h2>Papers w/ Tag {{tag}} ({{len papers}})</h2>
 
 <table>
     <tr>
