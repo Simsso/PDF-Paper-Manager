@@ -16,10 +16,17 @@ app.engine('handlebars', handlebars({
 }));
 
 app.use(express.static(__dirname + '/../public'))
+app.use('/pdf', express.static(process.env.PAPER_DIR))
 
 app.get('/', async (req, res) => {
     const [parsedPapers, invalidPaperFileNames] = await io.getPaperList();
-    res.render('main', {layout: 'index', papers: parsedPapers, invalidPaperFileNames: invalidPaperFileNames});
+    const options = {
+        layout: 'index',
+        papers: parsedPapers,
+        invalidPaperFileNames: invalidPaperFileNames,
+    };
+
+    res.render('main', options);
 });
 
 app.get('/papers', async (req, res) => {

@@ -24,7 +24,11 @@ TODO
     <tr>
         <td>{{renderAuthors this.authors}}{{renderEtAl this.hasEtAl}}</td>
         <td>{{this.year}}</td>
-        <td>{{this.title}}</td>
+        <td>
+            <a href="/pdf/{{this.fileName}}" title="{{this.fileName}}">
+                {{this.title}}
+            </a>
+        </td>
         <td>
             {{#each this.tags}}
                 <code>{{this}}</code>&nbsp;
