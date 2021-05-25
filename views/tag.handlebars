@@ -1,26 +1,3 @@
 <h2>Papers w/ Tag {{tag}} ({{len papers}})</h2>
 
-<table>
-    <tr>
-        <th>Authors</th>
-        <th>Year</th>
-        <th>Title</th>
-        <th>Tags</th>
-    </tr>
-{{#each papers}}
-    <tr>
-        <td>{{renderAuthors this.authors}}{{renderEtAl this.hasEtAl}}</td>
-        <td>{{this.year}}</td>
-        <td>
-            <a href="/pdf/{{this.fileName}}" title="{{this.fileName}}">
-                {{this.title}}
-            </a>
-        </td>
-        <td>
-            {{#each this.tags}}
-                <code class="tag">{{this}}</code>&nbsp;
-            {{/each}}
-        </td>
-    </tr>
-{{/each}}
-</table>
+{{>paper-table papers=papers}}
